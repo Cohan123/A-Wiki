@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast UI Prototyp (isoliert, kein Produktiv-Code)</title>
+<link rel="stylesheet" href="/assets/toast/vendor/toastui-editor-3.2.2.css">
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+  .row { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+  button { padding: 8px 14px; cursor: pointer; }
+  pre#out { background: #f4f4f4; padding: 12px; white-space: pre-wrap; word-break: break-word; min-height: 120px; }
+  .hint { color: #555; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<h1>Toast UI Editor 3.2.2 — Prototyp (isoliert)</h1>
+<p class="hint">Diese Seite ist eigenständig und fasst den Produktiv-Editor (<code>assets/app.js</code>) nicht an.
+Geprüft wird, ob Toast-Ausgaben zum Wiki-Dialekt (Tabelle, <code>{width=}</code>-Bilder, span-Farbe/-Größe, <code>~~strike~~</code>, h4, Backslash-Umbruch) passen.</p>
+<div id="editor"></div>
+<div class="row">
+  <button id="btnMd" type="button">Markdown auslesen</button>
+  <button id="btnHtml" type="button">HTML auslesen</button>
+  <button id="btnWysiwyg" type="button">In WYSIWYG wechseln</button>
+  <button id="btnMarkdown" type="button">In Markdown wechseln</button>
+</div>
+<pre id="out">(Ausgabe erscheint hier)</pre>
+<script type="module">
+import Editor from '/assets/toast/vendor/toastui-editor-3.2.2.bundle.js';
+
+const sample = [
+  '## E2E P6 Test',
+  '',
+  '| Name | Wert |',
+  '| --- | --- |',
+  '| Alpha | 1 |',
+  '',
+  'Text mit <span style="color: #ff0000;">roter Farbe</span> und <span style="font-size: 1.25rem;">grossem Text</span> sowie ~~durchgestrichen~~.',
+  '',
+  '#### Kleine Ueberschrift',
+  '',
+  'Zeile eins\\',
+  'Zeile zwei',
+  '',
+  '![Testbild](content/uploads/inline/test.png){width=420}',
+  ''
+].join('\n');
+
+const editor = new Editor({
+  el: document.querySelector('#editor'),
+  height: '500px',
+  initialEditType: 'markdown',
+  previewStyle: 'tab',
+  initialValue: sample,
+  usageStatistics: false
+});
+
+const out = document.getElementById('out');
+document.getElementById('btnMd').addEventListener('click', () => { out.textContent = editor.getMarkdown(); });
+document.getElementById('btnHtml').addEventListener('click', () => { out.textContent = editor.getHTML(); });
+document.getElementById('btnWysiwyg').addEventListener('click', () => { editor.changeMode('wysiwyg'); });
+document.getElementById('btnMarkdown').addEventListener('click', () => { editor.changeMode('markdown'); });
+window.__protoEditor = editor;
+</script>
+</body>
+</html>

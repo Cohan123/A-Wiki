@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Wiki",
+    "categories": [
+      "Wiki Anleitung"
+    ]
+  },
+  {
+    "name": "Technik",
+    "categories": [
+      "Elektrotechnik",
+      "IT&Systeme"
+    ]
+  }
+]

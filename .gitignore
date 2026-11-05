@@ -1,0 +1,15 @@
+versions/*.zip
+versions/*.json
+versions/*.log
+*.tmp
+*.log
+runtime/
+config/users.json
+content/conflicts/
+*.sync-conflict-*
+*conflicted copy*
+.stfolder/
+
+__pycache__/
+*.pyc
+

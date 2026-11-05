@@ -1,0 +1,16 @@
+[Unit]
+Description=Firmen-Wiki (Linux-Server Orange Pi)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/wiki
+ExecStart=/usr/bin/python3 /opt/wiki/server/wiki_server.py --port 8765 --bind 0.0.0.0 --root /opt/wiki
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

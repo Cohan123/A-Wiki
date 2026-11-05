@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Firmen-Wiki</title>
+    <link rel="stylesheet" href="assets/style.css">
+  </head>
+  <body class="auth-pending">
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#/">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span>
+            <strong>Firmen-Wiki</strong>
+            <small id="wikiMeta">Offline</small>
+          </span>
+        </a>
+        <div class="search-wrap">
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Artikel suchen">
+        </div>
+        <div class="topbar-actions">
+          <span id="currentUser" class="current-user" hidden></span>
+          <button id="usersNavButton" class="icon-button" type="button" hidden>Benutzer</button>
+          <button id="accountNavButton" class="icon-button" type="button" hidden>Mein Konto</button>
+          <button id="suggestionsNavButton" class="icon-button" type="button" hidden>Vorschläge</button>
+          <button id="logoutButton" class="icon-button" type="button" hidden>Abmelden</button>
+          <button id="themeToggleButton" class="icon-button" type="button" title="Darkmode umschalten" aria-label="Darkmode umschalten">Dunkel</button>
+          <button id="copyLinkButton" class="icon-button" type="button" title="Link kopieren" aria-label="Link kopieren" hidden>Link</button>
+          <button id="printButton" class="icon-button" type="button" title="Drucken" aria-label="Drucken" hidden>Druck</button>
+          <details id="optionsMenu" class="options-menu" hidden>
+            <summary class="icon-button" aria-label="Optionen">Optionen</summary>
+            <div class="options-dropdown" role="menu">
+              <button id="optionsCopyLink" class="options-item" type="button" role="menuitem">Link kopieren</button>
+              <button id="optionsPrint" class="options-item" type="button" role="menuitem">Drucken</button>
+              <button id="optionsBackupCreate" class="options-item" type="button" role="menuitem" hidden>Backup erstellen</button>
+              <button id="optionsBackupRestore" class="options-item" type="button" role="menuitem" hidden>Backup wiederherstellen</button>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <aside class="sidebar">
+        <nav aria-label="Wiki Navigation">
+          <a class="nav-home" href="#/">Startseite</a>
+          <button id="categoriesNavButton" class="nav-secondary" type="button">Kategorien</button>
+          <button id="productsNavButton" class="nav-secondary" type="button">Produkte</button>
+          <div class="side-section">
+            <h2>Kategorien</h2>
+            <div id="categoryNav" class="category-nav"></div>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="view" class="view" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
